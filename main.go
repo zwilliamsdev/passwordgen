@@ -8,13 +8,19 @@ import (
 )
 
 var (
+	// Password length
 	length          = 16
+	// Min length allowed
 	minLength       = 8
+	// Max length allowed
 	maxLength       = 64
 	letters         = []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
 	symbols         = []byte("!@#$&*_+{}[]:?")
+	// Can we use numbers - default true
 	useNumbers bool = true
+	// Can use symbols? - default false
 	useSymbols bool = false
+	// Placeholder for building the password
 	password   string
 )
 
@@ -94,12 +100,14 @@ func generatePassword() {
 			if useNumbers {
 				password += strconv.Itoa(generateNumber())
 			} else {
+				// User does not want numbers add another pass to the loop
 				i--
 			}
 		case 2:
 			if useSymbols {
 				password += string(generateSymbol())
 			} else {
+				// User does not want symbols add another pass to the loop
 				i--
 			}
 		}
